@@ -1,5 +1,5 @@
 # Introduction
-This is the open-source code for the official Xtreme Weather Radar. Development of the project started in May 2024, and it's currently on Version 1.5.0
+This is the open-source code for the official Xtreme Weather Radar. Development of the project started in May 2024, and it's currently on Version 1.5.0.
 
 ## Features
 - Customizable Map Types: Toggle between light mode, dark mode, or satellite.
