@@ -1168,7 +1168,7 @@ padding-left: 2px;
     color: white;
     cursor: not-allowed;
 }
-.tor-marker {
+        .tor-marker {
             background-color: red;
             border-radius: 100%;
             width: 100px;

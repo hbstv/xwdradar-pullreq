@@ -54,6 +54,31 @@ const satelliteLayer = L.maptilerLayer({
     style: 'https://api.maptiler.com/maps/dd940e48-cc35-41f3-b8e6-3942e4a1f75b/style.json?key=HKGa1lnD7ToUuzx5Ohp0'
 });
 
+// custom icon setup
+var tornadoReport = L.icon ({
+    iconUrl: 'reports/tornado.svg',
+
+    iconSize:     [16, 24], // size of the icon
+    iconAnchor:   [8, 24], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0]    // point from which the popup should open relative to the iconAnchor
+})
+
+var hailReport = L.icon ({
+    iconUrl: 'reports/hail.svg',
+
+    iconSize:     [16, 24], // size of the icon
+    iconAnchor:   [8, 24], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0]    // point from which the popup should open relative to the iconAnchor
+})
+
+var windReport = L.icon ({
+    iconUrl: 'reports/wind.svg',
+
+    iconSize:     [16, 24], // size of the icon
+    iconAnchor:   [8, 24], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, 0]    // point from which the popup should open relative to the iconAnchor
+})
+
 let currentMapLayer;
 
 // Function to set the map type and manage layers
@@ -2119,10 +2144,10 @@ async function loadReports() {
                 try {
                     const popupContent = getReport(report, "Tornado Report");
                     if (popupContent) { // Only add if the report is within 2 hours
-                        const marker = L.marker([parseFloat(report.Lat), parseFloat(report.Lon)], {
+                        const marker = L.marker([parseFloat(report.Lat), parseFloat(report.Lon), {icon: tornadoReport}], {
                             className: 'tor-marker'
                         }).addTo(map);
-                        marker.setIcon(L.divIcon({ className: 'tor-marker' }));
+                        marker.setIcon(tornadoReport);
                         marker.bindPopup(popupContent, { "autoPan": true, 'maxheight': '300', 'maxWidth': '250', 'className': 'alertpopup' });
                         
                         // Check if the report is more than 2 hours old
@@ -2150,10 +2175,10 @@ async function loadReports() {
                 try {
                     const popupContent = getReport(report, "Hail Report");
                     if (popupContent) { // Only add if the report is within 2 hours
-                        const marker = L.marker([parseFloat(report.Lat), parseFloat(report.Lon)], {
+                        const marker = L.marker([parseFloat(report.Lat), parseFloat(report.Lon), {icon: hailReport}], {
                             className: 'hail-marker'
                         }).addTo(map);
-                        marker.setIcon(L.divIcon({ className: 'hail-marker' }));
+                        marker.setIcon(hailReport);
                         marker.bindPopup(popupContent, { "autoPan": true, 'maxheight': '300', 'maxWidth': '250', 'className': 'alertpopup' });
 
                         // Check if the report is more than 2 hours old
@@ -2181,10 +2206,10 @@ async function loadReports() {
                 try {
                     const popupContent = getReport(report, "Wind Report");
                     if (popupContent) { // Only add if the report is within 2 hours
-                        const marker = L.marker([parseFloat(report.Lat), parseFloat(report.Lon)], {
+                        const marker = L.marker([parseFloat(report.Lat), parseFloat(report.Lon), {icon: windReport}], {
                             className: 'wind-marker'
                         }).addTo(map);
-                        marker.setIcon(L.divIcon({ className: 'wind-marker' }));
+                        marker.setIcon(windReport);
                         marker.bindPopup(popupContent, { "autoPan": true, 'maxheight': '300', 'maxWidth': '250', 'className': 'alertpopup' });
 
                         // Check if the report is more than 2 hours old
